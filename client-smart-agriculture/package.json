@@ -101,7 +101,8 @@
     "prettier": "^2.0.1",
     "pro-download": "1.0.1",
     "puppeteer-core": "^3.0.0",
-    "stylelint": "^13.0.0"
+    "stylelint": "^13.0.0",
+    "umi-plugin-antd-theme": "^2.1.2"
   },
   "engines": {
     "node": ">=10.0.0"

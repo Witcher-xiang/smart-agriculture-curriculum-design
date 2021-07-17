@@ -56,6 +56,12 @@ export default defineConfig({
               component: './Welcome',
             },
             {
+              path: "/history",
+              name: "history",
+              icon: "smile",
+              component: "./history"
+            },
+            {
               path: '/admin',
               name: 'admin',
               icon: 'crown',

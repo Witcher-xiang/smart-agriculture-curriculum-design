@@ -12,9 +12,11 @@ tempuareChannel = 17
 rainChannel = 4
 soilChannel = 27
 
-localUrl = "http://192.168.1.18:3000/sensor/getSensorList"
+#  注意修改你的服务器地址
+localUrl = "http://192.168.1.131:3000/sensor/getSensorList"
 remoteUrl = "http://101.201.65.247/sensor/update"
-testurl = "http://192.168.1.18:3000/sensor/update"
+testurl = "http://192.168.1.116:3000/sensor/update"
+contorlUrl = 'http://192.168.1.116:3000/command/detail'
 
 tempuareSensor=Adafruit_DHT.DHT11
 
@@ -25,11 +27,21 @@ GPIO.setup(lightChanel, GPIO.IN)
 GPIO.setup(rainChannel, GPIO.IN)
 GPIO.setup(soilChannel, GPIO.IN)
 
+# 每次启动前关闭多余链接
+requests.adapters.DEFAULT_RETRIES = 5 
+server = requests.session()
+server.keep_alive = False
+
+
 while True:
+    
+    headers = {'content-type': "application/json"}
+    #首先拿到配置信息
+    controlRule = requests.get(contorlUrl).json()
+    print("control cmd is {0}".format(controlRule))
+     
     #response = requests.get(localUrl, {})
    
-    headers = {'content-type': "application/json"}
-    
     humidity, temperature = Adafruit_DHT.read_retry(tempuareSensor, tempuareChannel)
     light = GPIO.input(lightChanel)
     hasRanin = GPIO.input(rainChannel)
@@ -45,11 +57,11 @@ while True:
          "humidity":humidity,
          "temperature":temperature,
          "solidStatus":hasDirty,
+         "light": light,
      
          }),headers=headers).json()
     
-    print(response01)
-   
-   
-     
+    
+
     time.sleep(10)
+

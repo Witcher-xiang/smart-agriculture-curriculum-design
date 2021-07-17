@@ -40,7 +40,7 @@ const menuDataRender = menuList =>
 
 const defaultFooterDom = (
   <DefaultFooter
-    copyright={`${new Date().getFullYear()} 蚂蚁金服体验技术部出品`}
+    copyright={`${new Date().getFullYear()} 物联网智慧大棚——毕设`}
     links={[
       {
         key: 'Ant Design Pro',
@@ -55,7 +55,7 @@ const defaultFooterDom = (
         blankTarget: true,
       },
       {
-        key: 'Ant Design',
+        key: '王宇翔——201731064221',
         title: 'Ant Design',
         href: 'https://ant.design',
         blankTarget: true,
@@ -108,7 +108,7 @@ const BasicLayout = props => {
       menuHeaderRender={(logoDom, titleDom) => (
         <Link to="/">
           {logoDom}
-          {titleDom}
+          <div style={{marginLeft:"20px"}}>物联网智慧大棚系统</div>
         </Link>
       )}
       onCollapse={handleMenuCollapse}

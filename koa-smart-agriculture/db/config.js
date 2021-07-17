@@ -5,9 +5,14 @@ let MYSQL_CONF,REDIS_CONF;
 
 if (env === "dev"){
     MYSQL_CONF = {
-        host: "101.201.65.247",
+        // host: "101.201.65.247",
+        // user: "root",
+        // password: "WYXaptx4869.",
+        // port:"3306",
+        // database:"sensor_database"
+        host: "127.0.0.1",
         user: "root",
-        password: "WYXaptx4869.",
+        password: "123456",
         port:"3306",
         database:"sensor_database"
     };
